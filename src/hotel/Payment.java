@@ -1,9 +1,15 @@
 package hotel;
 
-public class Payment {
-    String guestName;
-    double amount;
+public abstract class Payment {
+    protected String guestName;
+    protected double amount;
 
-    public Payment(String gName, double amt) { guestName = gName; amount = amt; }
-    public void process() { System.out.println(guestName + " оплатив " + amount + " грн"); }
+    public Payment(String guestName, double amount) {
+        this.guestName = guestName;
+        this.amount = amount;
+    }
+
+    public abstract void process();
+    public abstract void refund();
+    public abstract void info();
 }
