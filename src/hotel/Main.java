@@ -2,26 +2,24 @@ package hotel;
 
 public class Main {
     public static void main(String[] args) {
-        Guest guest = ObjectFactory.createGuest("Іван Іванов", "0991234567", "ivan@email.com");
-        Room room = ObjectFactory.createRoom(101, "Стандарт", 1200);
-        Booking booking = ObjectFactory.createBooking("01.12.2025", "05.12.2025", guest.name, room.number);
+        // создаём гостя: name, phone, email
+        Guest guest = new Guest("Ілля Лор", "0976541230", "illal@email.com");
 
         guest.showInfo();
-        room.showInfo();
-        System.out.println(booking);
+        guest.checkIn();
 
-        Payment pay1 = new CashPayment(guest.name, 500);
-        pay1.process();
-        Payment pay2 = new CardPayment(guest.name, 700, "Visa");
-        pay2.process();
+        Payment p1 = new CashPayment(guest.name, 400);
+        Payment p2 = new CardPayment(guest.name, 550, "Visa");
 
-        Service cleaning = new Service("Прибирання", 100);
-        cleaning.use();
+        p1.process();
+        p2.process();
 
-        MealService dinner = new MealService("Вечеря", 250);
-        dinner.use();
+        Service meal = new MealService("Вечеря", 220);
+        Service minibar = new RoomService("Мінібар", 150, 131);
 
-        RoomService minibar = new RoomService("Мінібар", 200, room.number);
+        meal.use();
         minibar.use();
+
+        guest.checkOut();
     }
 }
