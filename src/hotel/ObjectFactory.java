@@ -1,21 +1,23 @@
 package hotel;
 
 public class ObjectFactory {
-    public static Guest createGuest(String n, String ph, String email) {
-        Guest g = new Guest(n, ph, email);
-        DataStorage.addGuest(g);
-        return g;
+    public static Guest createGuest(String name, String phone, String email) {
+        return new Guest(name, phone, email);
     }
 
-    public static Room createRoom(int num, String type, double price) {
-        Room r = new Room(num, type, price);
-        DataStorage.addRoom(r);
-        return r;
+    public static CashPayment createCashPayment(String guestName, double amount) {
+        return new CashPayment(guestName, amount);
     }
 
-    public static Booking createBooking(String sd, String ed, String gName, int rNum) {
-        Booking b = new Booking(sd, ed, gName, rNum);
-        DataStorage.addBooking(b);
-        return b;
+    public static CardPayment createCardPayment(String guestName, double amount, String cardType) {
+        return new CardPayment(guestName, amount, cardType);
+    }
+
+    public static MealService createMealService(String name, double price) {
+        return new MealService(name, price);
+    }
+
+    public static RoomService createRoomService(String name, double price, int roomNumber) {
+        return new RoomService(name, price, roomNumber);
     }
 }
