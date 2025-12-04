@@ -1,8 +1,25 @@
 package hotel;
 
 public class RoomService extends Service {
-    int roomNumber;
-    public RoomService(String n, double p, int rNum) { super(n, p); roomNumber = rNum; }
+    private int roomNumber;
+
+    public RoomService(String name, double price, int roomNumber) {
+        super(name, price);
+        this.roomNumber = roomNumber;
+    }
+
     @Override
-    public void use() { System.out.println("Послуга для кімнати " + roomNumber + ": " + name); }
+    public void use() {
+        System.out.println("Послуга для кімнати " + roomNumber + ": " + name);
+    }
+
+    @Override
+    public void getServiceInfo() {
+        System.out.println("RoomService: " + name + ", Ціна: " + price + ", Кімната: " + roomNumber);
+    }
+
+    @Override
+    public double calculateCost() {
+        return price;
+    }
 }
