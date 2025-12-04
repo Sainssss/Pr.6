@@ -1,7 +1,15 @@
 package hotel;
 
-public class Person {
-    String name, phone;
-    public Person(String n, String ph) { name = n; phone = ph; }
-    public void showInfo() { System.out.println(name + ", Тел: " + phone); }
+public abstract class Person {
+    protected String name;
+    protected String phone;
+
+    public Person(String name, String phone) {
+        this.name = name;
+        this.phone = phone;
+    }
+
+    public abstract void showInfo();
+    public abstract void checkIn();
+    public abstract void checkOut();
 }
