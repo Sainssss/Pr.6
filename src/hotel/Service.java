@@ -1,7 +1,15 @@
 package hotel;
 
-public class Service {
-    String name; double price;
-    public Service(String n, double p) { name = n; price = p; }
-    public void use() { System.out.println("Використана послуга: " + name); }
+public abstract class Service {
+    protected String name;
+    protected double price;
+
+    public Service(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public abstract void use();
+    public abstract void getServiceInfo();
+    public abstract double calculateCost();
 }
